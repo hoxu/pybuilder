@@ -106,7 +106,7 @@ def create_venvs(logger, project, reactor):
 def list_packages(project):
     source_path = project.expand_path("$" + PYTHON_SOURCES_PROPERTY)
     result = []
-    for root, dirs, files in walk(source_path):
+    for root, dirs, files in walk(source_path, followlinks=True):
         if "__init__.py" in files:
             result.append(relpath(root, source_path).replace(sep, "."))
 
